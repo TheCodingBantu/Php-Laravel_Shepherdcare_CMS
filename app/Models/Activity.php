@@ -11,4 +11,7 @@ class Activity extends Model
     public function getActivityRelation(){
         return $this->belongsTo('App\Models\Member','member_id','id');
     }
+    public function getUserRelation(){
+        return $this->belongsTo('App\Models\User','added_by','id');
+    }
 }

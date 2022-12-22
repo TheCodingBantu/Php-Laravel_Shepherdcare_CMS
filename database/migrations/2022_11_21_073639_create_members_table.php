@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('surname');
             $table->string('other_names');
             $table->string('phone');
+            $table->string('role');
             $table->string('email')->nullable();
             $table->string('residence');
             $table->string('marital_status');

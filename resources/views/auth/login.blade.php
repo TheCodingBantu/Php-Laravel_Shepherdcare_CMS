@@ -1,9 +1,8 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            <img src="{{asset('/dist/img/logo.png')}}" width="60" class='mx-auto' alt="">
+            <span class="text-lg font-bold">Shepherd Care Login</span>
         </x-slot>
 
         <!-- Session Status -->
@@ -34,12 +33,12 @@
             </div>
 
             <!-- Remember Me -->
-            <div class="block mt-4">
+            {{-- <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
                     <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
-            </div>
+            </div> --}}
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))

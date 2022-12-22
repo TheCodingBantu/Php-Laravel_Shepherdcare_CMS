@@ -23,7 +23,7 @@
 <script src="{{ asset('dist/js/adminlte.js')}}"></script>
 <script src="{{ asset('plugins/bs-stepper/js/bs-stepper.min.js')}}"></script>
 
-<script src="{{ asset('dist/js/pages/dashboard3.js')}}"></script>
+{{-- <script src="{{ asset('dist/js/pages/dashboard3.js')}}"></script> --}}
 
 </body>
 </html>

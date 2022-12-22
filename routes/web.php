@@ -13,18 +13,16 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     
-    Route::get('/dashboard', function () {
-        return view('index');
-    })->name('dashboard');
-
+    
+    Route::get('/dashboard', [ActivityController::class, 'dashboard'])->name('dashboard');
     Route::get('/activity/{name}', [ActivityController::class, 'show'])->name('activity');
+    Route::post('/activity/{name}', [ActivityController::class, 'search'])->name('search');
     Route::get('/activity/details/{id}', [ActivityController::class, 'activitydetails'])->name('activity-details');
     Route::post('/comment', [ActivityController::class, 'postcomment']);
     
     
     Route::get('/addactivity', [ActivityController::class, 'index'])->name('addactivity');
     Route::post('/addactivity', [ActivityController::class, 'store']);
-
     Route::get('/members', [MemberController::class, 'index'])->name('members');
     
     
@@ -34,11 +32,11 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/profile/{id}', [MemberController::class, 'profile'])->name('profile');
     Route::get('/addmember', [MemberController::class, 'addmember'])->name('addmember');
+    Route::post('/updatemember', [MemberController::class, 'updatemember']);
     Route::post('/addmember', [MemberController::class, 'store']);
 
-    Route::get('/search', [ActivityController::class, 'search'])->name('search');
+    // Route::get('/search', [ActivityController::class, 'search'])->name('search');
 
-    
 
 });
 

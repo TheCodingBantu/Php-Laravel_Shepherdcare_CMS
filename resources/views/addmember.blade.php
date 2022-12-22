@@ -223,6 +223,17 @@
                                     <div id="information-part" class="content" role="tabpanel"
                                         aria-labelledby="information-part-trigger">
                                         <div class="form-group">
+                                            <label>User Role: </label>
+                                            <div class="select2-green">
+                                                <select id="role"  class="select2"
+                                                    data-placeholder="Select a State" style="width: 100%;">
+                                                    <option value="member" >Member</option>
+                                                    <option value="admin" >Admin</option>
+                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Ministries interested in: </label>
                                             <div class="select2-green">
                                                 <select id="ministry" class="select2" multiple="multiple"
@@ -243,8 +254,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            Visit <a href="https://github.com/Johann-S/bs-stepper/#how-to-use-it">bs-stepper
-                                documentation</a> for more examples and information about the plugin.
+                            
                         </div>
                     </div>
                     <!-- /.card -->
@@ -284,6 +294,7 @@
         var phone = $('#phone').val()
         var email = $('#email').val()
         var residence = $('#residence').val()
+        var role = $('#role').val()
 
         if ($('#' + 'divorced').is(":checked")) var marital_status = $('#divorced').val()
         if ($('#' + 'married').is(":checked")) var marital_status = $('#married').val()
@@ -316,7 +327,8 @@
                 description: description,
                 is_saved: is_saved,
                 date_saved: date_saved,
-                ministry: ministry
+                ministry: ministry,
+                role: role
 
 
             },
