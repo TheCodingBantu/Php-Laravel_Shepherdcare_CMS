@@ -11,14 +11,14 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="mt-3 pb-3 mb-3 d-flex">
 
-        <div class="image">
+        {{-- <div class="image">
         <img src="{{ Avatar::create(Auth::User()->name)->toBase64() }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
         <a href="#" class="d-block">{{Auth::User()->name}}</a>
-        </div>
+        </div> --}}
         </div>
  
       <!-- Sidebar Menu -->

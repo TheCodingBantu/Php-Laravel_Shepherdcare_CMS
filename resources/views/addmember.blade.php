@@ -226,7 +226,7 @@
                                             <label>User Role: </label>
                                             <div class="select2-green">
                                                 <select id="role"  class="select2"
-                                                    data-placeholder="Select a State" style="width: 100%;">
+                                                    data-placeholder="" style="width: 100%;">
                                                     <option value="member" >Member</option>
                                                     <option value="admin" >Admin</option>
                                                    
@@ -237,7 +237,7 @@
                                             <label>Ministries interested in: </label>
                                             <div class="select2-green">
                                                 <select id="ministry" class="select2" multiple="multiple"
-                                                    data-placeholder="Select a State" style="width: 100%;">
+                                                    data-placeholder="Select a ministry" style="width: 100%;">
                                                     <option>Children Ministry</option>
                                                     <option>Ushering</option>
                                                     <option>Praise and Worship</option>

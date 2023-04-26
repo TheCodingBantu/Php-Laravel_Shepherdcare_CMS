@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('added_by');
-            $table->longText('assigned_to')->nullable;
+            $table->longText('assigned_to')->nullable()->default(null);
             $table->timestamps();
         });
     }

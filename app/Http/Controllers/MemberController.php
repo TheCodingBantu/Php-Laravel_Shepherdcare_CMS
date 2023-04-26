@@ -61,7 +61,7 @@ class MemberController extends Controller
                     $user->save();
                 }
     
-                return response()->json(['success'=>'item saved']);
+                return response()->json(['success'=>'Member saved']);
 
         } 
         

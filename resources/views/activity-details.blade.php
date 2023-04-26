@@ -112,7 +112,7 @@
 
                         <div class="widget-user-header bg-white">
                             <h3 class="widget-user-username">{{ $user->name }}</h3>
-                            <h5 class="widget-user-desc">Pastor</h5>
+                            <h5 class="widget-user-desc"></h5>
                         </div>
                         <div class="widget-user-image">
                             <img class="img-circle elevation-2" src={{ Avatar::create($user->name)->toBase64() }}
@@ -208,6 +208,7 @@
                         delay: 2000,
                         body: response.success,
                     })
+                    window.location.reload()
                 }
                 if (response.error) {
                     $(document).Toasts('create', {

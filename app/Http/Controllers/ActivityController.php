@@ -47,7 +47,6 @@ class ActivityController extends Controller
             ->groupBy(function ($date) {
                 return Carbon::parse($date->created_at)->format('m');
             });
-
         $usermcount = [];
         $userArr = [];
 

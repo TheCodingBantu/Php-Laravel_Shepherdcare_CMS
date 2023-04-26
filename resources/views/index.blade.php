@@ -34,7 +34,7 @@
                     <div class="info-box shadow-none p-4 " style="background-color: #35353D;">
                         <span class="info-box-icon bg-black  "><i class=" text-xl fas fa-users"></i></span>
 
-                        <div class="info-box-content text-white">
+                        <div onclick="window.location='{{route('members')}}'" class="info-box-content text-white">
                             <span class="info-box-text">Members</span>
                             <span class="info-box-number">
                                 {{ $members }}
@@ -50,7 +50,7 @@
                     <div class="info-box shadow-none p-4 mb-3 shadow-none" style="background-color: #FFFBEF;">
                         <span class="info-box-icon bg-white "><i class="fas fa-link"></i></span>
 
-                        <div class="info-box-content">
+                        <div onclick="window.location='{{route('activity',['name'=>'connect'])}}'" class="info-box-content">
                             <span class="info-box-text">Connects</span>
                             <span class="info-box-number">{{ $connects }}</span>
                         </div>
@@ -67,7 +67,7 @@
                     <div class="info-box shadow-none p-4 mb-3" style="background-color: #EFEFF1;">
                         <span class="info-box-icon bg-white "><i class="fas fa-heart"></i></span>
 
-                        <div class="info-box-content">
+                        <div onclick="window.location='{{route('activity',['name'=>'care'])}}'" class="info-box-content">
                             <span class="info-box-text">Cares</span>
                             <span class="info-box-number">{{ $cares }}</span>
                         </div>
@@ -80,7 +80,7 @@
                     <div class="info-box shadow-none p-4 mb-3 " style="background-color: #E9EAFF;">
                         <span class="info-box-icon bg-white "><i class="fas fa-trophy"></i></span>
 
-                        <div class="info-box-content">
+                        <div onclick="window.location='{{route('activity',['name'=>'celebrate'])}}'" class="info-box-content">
                             <span class="info-box-text">Celebrations</span>
                             <span class="info-box-number">{{ $celebrations }}</span>
                         </div>
@@ -157,23 +157,18 @@
                         <div class="card-body p-0">
                             <ul class="products-list product-list-in-card pl-2 pr-2">
                                 @foreach ($items as $item)
-                                    <li class="item"
-                                        onclick="javascript:window.location.href='{{ route('activity-details', ['id' => $item->id]) }}'">
-                                        <div class="product-img ">
-                                            <img class="rounded-circle"
-                                                src=" {{ Avatar::create($item->getActivityRelation->other_names)->toBase64() }}"
-                                                alt="" class="img-size-50">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)"
-                                                class="product-title text-dark">{{ $item->title }}
-                                                <span class="badge float-right"><span
-                                                        class="text-dark mr-2">{{ $item->created_at->diffForHumans() }}</a>
-                                            <span class="product-description">
-                                                {{ $item->description }}
-                                            </span>
-                                        </div>
-                                    </li>
+                                <li class="item" onclick="javascript:window.location.href='{{ route('activity-details', ['id' => $item->id]) }}'">
+                                    <div class="product-img ">
+                                        <img class="rounded-circle" src=" {{ Avatar::create($item->getActivityRelation->other_names)->toBase64() }}" alt="" class="img-size-50">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title text-dark">{{ $item->title }}
+                                            <span class="badge float-right"><span class="text-dark mr-2">{{ $item->created_at->diffForHumans() }}</a>
+                                        <span class="product-description">
+                                            {{ $item->description }}
+                                        </span>
+                                    </div>
+                                </li>
                                 @endforeach
 
 
@@ -211,7 +206,11 @@
 
         var ticksStyle = {
             fontColor: '#495057',
-            fontStyle: 'bold'
+            fontStyle: 'bold',
+            
+      stepSize: 10,
+      beginAtZero: true,
+    
         }
 
         var mode = 'index'
@@ -223,11 +222,11 @@
         var salesChart = new Chart($salesChart, {
             type: 'bar',
             data: {
-                labels: ['JAN', 'FEB', 'MAR', 'APR','MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
                 datasets: [{
                         backgroundColor: '#007bff',
                         borderColor: '#007bff',
-                        data:{!! $graph !!}
+                        data: {!!$graph!!}
                     },
                     {
                         backgroundColor: '#ced4da',
@@ -262,10 +261,11 @@
                             beginAtZero: true,
 
                             // Include a dollar sign in the ticks
-                           
+
                         }, ticksStyle)
                     }],
                     xAxes: [{
+                        
                         display: true,
                         gridLines: {
                             display: false

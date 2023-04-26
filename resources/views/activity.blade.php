@@ -165,7 +165,7 @@
         }); //end ajax
         success: function(response) {
 
-            window.location.
+            // window.location.
         },
     }
 </script>

@@ -60,7 +60,7 @@
                   <div class="step" data-target="#information-part">
                     <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
                       <span class="bs-stepper-circle">3</span>
-                      <span class="bs-stepper-label">Assign</span>
+                      <span class="bs-stepper-label">Share</span>
                     </button>
                   </div>
          
@@ -112,9 +112,9 @@
 
                   <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                     <div class="form-group">
-                      <label>Select people you want to assign this activity to</label>
+                      <label>Select people you want to share this activity with</label>
                       <div class="select2-green">
-                      <select id="assigned-to" class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                      <select id="assigned-to" class="select2" multiple="multiple" data-placeholder="Search Users" style="width: 100%;">
                         @foreach($records as $record)
                         <option value="{{$record->id}}" >{{$record->surname}}{{$record->other_names}}</option>
                         @endforeach
