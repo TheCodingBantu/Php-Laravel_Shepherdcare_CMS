@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="main-section-data">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                        <div class="col-lg-3 col-md-4 d-md-block d-sm-none pd-left-none no-pd">
                             <div class="main-left-sidebar no-margin">
                                 <div class="user-data full-width">
                                     <div class="user-profile">
@@ -35,10 +35,9 @@
 
                             </div>
                         </div>
-                        @if ($activityId)
-                        <livewire:single-post :id="$activityId">
-                            
-                        
+                        @if ($singlePost)
+
+                        <livewire:single-post :id="$singlePost">
                         @else
                         <livewire:modal/>
                             
@@ -152,4 +151,4 @@
         </div>
     </main>
 
- 
+

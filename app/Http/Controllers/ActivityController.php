@@ -131,7 +131,6 @@ class ActivityController extends Controller
 
     public function activitydetails(Request $request, $id)
     {
-
         //
         $record = Activity::findOrFail($id);
         $member = Member::findOrFail($record->member_id);

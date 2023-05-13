@@ -15,7 +15,7 @@
         </div>
         <div class="posts-section">
             @foreach ($records as $record)
-                <div wire:click='displayDetails({{$record->id}})' class="post-bar" >
+                <div id="{{'post'.$record->id}}" wire:click='displayDetails({{$record->id}})' class="post-bar" >
                     <div class="post_topbar">
                         <div class="usy-dt">
                             <img src="{{ asset('user/images/resources/us-pic.png') }}" alt>
@@ -37,10 +37,10 @@
                                     </ul> --}}
                         </div>
                     </div>
-                    <div class="epi-sec">
+
+                    {{-- <div class="epi-sec">
                         <ul class="descp">
-                            <li><img src="{{ asset('user/images/icon8.png') }}" alt><span>Epic
-                                    Coder</span></li>
+                            <li><img src="{{ asset('user/images/icon8.png') }}" alt><span>{{$record->getUserRelation->name}}</span></li>
                             <li><img src="{{ asset('user/images/icon9.png') }}" alt><span>India</span></li>
                         </ul>
                         <ul class="bk-links">
@@ -49,13 +49,14 @@
                             <li><a href="#" title><i class="la la-envelope"></i></a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
+
                     <div class="job_descp">
                         <h3>{{ $record->title }}</h3>
-                        <ul class="job-dt">
+                        {{-- <ul class="job-dt">
                             <li><a href="#" title>Full Time</a></li>
                             <li><span>$30 / hr</span></li>
-                        </ul>
+                        </ul> --}}
                         <p>{{ $record->description }}</p>
                         <ul class="skill-tags">
                             <li><a href="#" title>Member</a></li>

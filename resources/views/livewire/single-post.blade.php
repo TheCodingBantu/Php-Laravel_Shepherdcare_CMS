@@ -1,4 +1,6 @@
 <div id="post-top" class="col-lg-6 col-md-8 no-pd">
+    <a class="btn btn-primary mb-2" href="{{route('feed')}}">back</a>
+
     <div class="main-ws-sec">
 
         <div class="posty">
@@ -54,11 +56,11 @@
                     <ul class="like-com">
                         <li>
                             <img src="{{ asset('user/images/liked-img.png') }}" alt>
-                            <span>25</span>
+                            <span>{{count($comments)}}</span>
                         </li>
-                        <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comment 15</a></li>
+                        <li><a href="#" class="com"><i class="fas fa-comment-alt"></i> {{ count($comments) }} Comment(s)</a></li>
                     </ul>
-                    <a href="#"><i class="fas fa-eye"></i>Views 50</a>
+                    {{-- <a href="#"><i class="fas fa-eye"></i>Views 50</a> --}}
                 </div>
             </div>
 
@@ -68,29 +70,22 @@
                     <ul>
                        
                         <li>
+                            @if (sizeof($comments) != 0)
+                            @foreach ($comments as $comment)
                             <div class="comment-list">
                                 <div class="bg-img">
                                     
                                 </div>
                                 <div class="comment">
-                                    <h3>John Doe</h3>
-                                    <span><img src="{{ asset('user/images/clock.png')}}" alt=""> 3 min ago</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit
-                                        metus,
-                                        ut ullamcorper quam finibus at.</p>
+                                    <h3>{{$comment->getCommentRelation->name}}</h3>
+                                    <span><img src="{{ asset('user/images/clock.png')}}" alt=""> {{ $comment->created_at->diffForHumans() }}</span>
+                                    <p> {{ $comment->comment }}</p>
                                 </div>
                             </div>
 
-                            <div class="comment-list">
-                                
-                                <div class="comment">
-                                    <h3>John Doe</h3>
-                                    <span><img src="{{ asset('user/images/clock.png')}}" alt=""> 3 min ago</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit
-                                        metus,
-                                        ut ullamcorper quam finibus at.</p>
-                                </div>
-                            </div>
+                            @endforeach
+                            @else
+                            @endif
                         </li>
                     </ul>
                 </div>
@@ -99,8 +94,9 @@
                         <img src="images/resources/bg-img4.png" alt="">
                     </div>
                     <div class="comment_box">
-                        <form>
-                            <input type="text" placeholder="Post a comment">
+                        {{-- {{$err}} --}}
+                        <form wire:submit.prevent="postComment">
+                            <input wire:model="comment" type="text" placeholder="Post a comment">
                             <button type="submit">Send</button>
                         </form>
                     </div>
@@ -108,15 +104,7 @@
             </div>
         </div>
     </div>
-    
-    {{-- <script>
-        document.addEventListener('livewire:load', function () {
-    
-        var section = document.getElementById('post-top');
-        if (section) {
-            section.scrollIntoView({behavior: 'smooth'});
-        }
-    
-});
-    </script> --}}
+<script>
+window.scrollTo({ top: 0, behavior: 'smooth' });
+</script>
 </div>

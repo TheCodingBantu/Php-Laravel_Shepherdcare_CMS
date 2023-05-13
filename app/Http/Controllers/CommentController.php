@@ -36,6 +36,24 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+        try {
+
+            // Validate the value...
+            $item = new Comment();
+            $item->user_id = $request->input('user');
+            $item->activity_id = $request->input('activity');
+            $item->comment = $request->input('comment');
+
+            $item->save();
+
+            return response()->json(['success' => 'Comment saved']);
+        }
+
+        //code...
+        catch (\Throwable $th) {
+            //throw $th;
+            return response()->json(['error' => $th->getMessage()]);
+        }
     }
 
     /**

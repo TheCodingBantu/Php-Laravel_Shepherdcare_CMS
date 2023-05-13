@@ -11,14 +11,15 @@ use Livewire\Component;
 class Feed extends Component
 {
 
-    public $activityId=null;
+    public $singlePost=null;
 
     protected $listeners = ['activityClicked'];
 
     public function activityClicked($id)
     {
-        $this->activityId = $id;
+        $this->singlePost = $id;
     }
+
     public function render()
 
     {   
