@@ -44,22 +44,10 @@
             </div>
         </div>
         {{-- stop adding tabs --}}
-        <div class="post-topbar">
-            <div class="user-picy">
-                <img src="{{ asset('user/images/resources/user-pic.png') }}" alt>
-            </div>
-            <div class="post-st">
-                <ul>
-                    <li>
 
-                    </li>
-                    <li><a class="post-jb active" href="#" title>New Post</a></li>
-                </ul>
-            </div>
-        </div>
         <div class="posts-section">
             @foreach ($records as $record)
-            <div id="all" wire:click='displayDetails({{$record->id}})' class="post-bar product-feed-tab current" >
+            <div id="all" wire:click='displayPostDetails({{$record->id}})' class="post-bar product-feed-tab current" >
                 <div class="post_topbar">
                     <div class="usy-dt">
                         <img src="{{ asset('user/images/resources/us-pic.png') }}" alt>
@@ -120,7 +108,7 @@
                 </div>
             </div>
             @if ($record->category == 'come')
-            <div id="come" wire:click='displayDetails({{$record->id}})' class="post-bar product-feed-tab current" >
+            <div id="come" wire:click='displayPostDetails({{$record->id}})' class="post-bar product-feed-tab current" >
                 <div class="post_topbar">
                     <div class="usy-dt">
                         <img src="{{ asset('user/images/resources/us-pic.png') }}" alt>
@@ -182,7 +170,7 @@
             </div>
             @endif
             @if ($record->category == 'connect')
-            <div id="connect" wire:click='displayDetails({{$record->id}})' class="post-bar product-feed-tab current" >
+            <div id="connect" wire:click='displayPostDetails({{$record->id}})' class="post-bar product-feed-tab current" >
                 <div class="post_topbar">
                     <div class="usy-dt">
                         <img src="{{ asset('user/images/resources/us-pic.png') }}" alt>
@@ -244,7 +232,7 @@
             </div>
             @endif 
             @if ($record->category == 'care')
-            <div id="care" wire:click='displayDetails({{$record->id}})' class="post-bar product-feed-tab current" >
+            <div id="care" wire:click='displayPostDetails({{$record->id}})' class="post-bar product-feed-tab current" >
                 <div class="post_topbar">
                     <div class="usy-dt">
                         <img src="{{ asset('user/images/resources/us-pic.png') }}" alt>
@@ -306,7 +294,7 @@
             </div>
             @endif 
             @if ($record->category == 'calling')
-            <div id="calling" wire:click='displayDetails({{$record->id}})' class="post-bar product-feed-tab current" >
+            <div id="calling" wire:click='displayPostDetails({{$record->id}})' class="post-bar product-feed-tab current" >
                 <div class="post_topbar">
                     <div class="usy-dt">
                         <img src="{{ asset('user/images/resources/us-pic.png') }}" alt>
@@ -368,7 +356,7 @@
             </div>
             @endif
             @if ($record->category == 'celebrate')
-            <div id="celebrate" wire:click='displayDetails({{$record->id}})' class="post-bar product-feed-tab current" >
+            <div id="celebrate" wire:click='displayPostDetails({{$record->id}})' class="post-bar product-feed-tab current" >
                 <div class="post_topbar">
                     <div class="usy-dt">
                         <img src="{{ asset('user/images/resources/us-pic.png') }}" alt>
@@ -434,72 +422,6 @@
     </div>
 
 
-    {{-- modal start --}}
-
-    <div class="post-popup job_post" wire:ignore.self>
-        <div class="post-project">
-            <h3>Post a job</h3>
-
-            <div class="post-project-fields">
-                {{ $err }}
-                <form wire:submit.prevent>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            {{-- <input type="text" name="title" placeholder="Title"> --}}
-                            <input wire:model="title" type="text" name="title" placeholder="Title">
-
-                        </div>
-                        <div class="col-lg-12" style="margin-bottom: 15px">
-                            <div class="inp-field">
-                                <select wire:model="member" class="js-example-basic-single form-control">
-                                    <option value="">Search Member ...</option>
-                                    @foreach ($members as $member)
-                                        <option value="{{ $member->id }}">{{ $member->other_names }}
-                                            {{ $member->surname }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="margin-bottom: 15px">
-                            <div class="inp-field">
-                                <select wire:model="category" class="js-example-basic-single form-control">
-                                    <option value="">Category</option>
-
-                                    <option>connect</option>
-                                    <option>connect</option>
-                                    <option>care</option>
-                                    <option>calling</option>
-                                    <option>celebration</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12">
-                            <textarea wire:model="description" name="description" placeholder="Description"></textarea>
-
-                        </div>
-                        <div class="col-lg-12">
-                            <ul>
-                                <li><button class="active" wire:click='store'>Post</button></li>
-                                <li><a href="#" title="">Cancel</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <a href="#" title=""><i class="la la-times-circle-o"></i></a>
-        </div>
-    </div>
 
 
-    {{-- modal end --}}
-    <script>
-        Livewire.on('hideModal', () => {
-        $(".post-popup.job_post").removeClass("active");
-        $(".wrapper").removeClass("overlay");
-        return false;
-        });
-
-        
-    </script>
 </div>

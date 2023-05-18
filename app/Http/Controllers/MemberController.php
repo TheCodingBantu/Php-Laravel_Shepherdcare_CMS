@@ -156,29 +156,5 @@ class MemberController extends Controller
         ]);
     }
 
-    public function memberprofile($id)
-    {
 
-        // count number of entries
-        $connects = Activity::where('category', '=', 'connect')->where('member_id', '=', $id)->get();
-        $cares = Activity::where('category', '=', 'care')->where('member_id', '=', $id)->get();
-        $calling = Activity::where('category', '=', 'calling')->where('member_id', '=', $id)->get();
-        $celebrations = Activity::where('category', '=', 'celebrate')->where('member_id', '=', $id)->get();
-
-        $count = [count($connects), count($cares), count($calling), count($celebrations)];
-
-
-        $member = Member::findOrFail($id);
-        $connects = Activity::where('category', '=', 'connect')->where('member_id', '=', $id)->with('getActivityRelation')->with('getUserRelation')->limit(5)->get();
-        $cares = Activity::where('category', '=', 'care')->where('member_id', '=', $id)->with('getActivityRelation')->with('getUserRelation')->limit(5)->get();
-        $calling = Activity::where('category', '=', 'calling')->where('member_id', '=', $id)->with('getActivityRelation')->with('getUserRelation')->limit(5)->get();
-        $celebrations = Activity::where('category', '=', 'celebrate')->where('member_id', '=', $id)->with('getActivityRelation')->with('getUserRelation')->limit(5)->get();
-
-        Session::put('memberId', $member->id);
-        Session::put('memberRole', $member->role);
-
-        return view('user.profile', [
-            'record' => $member, 'connects' => $connects, 'cares' => $cares, 'callings' => $calling, 'celebrations' => $celebrations, 'count' => $count
-        ]);
-    }
 }

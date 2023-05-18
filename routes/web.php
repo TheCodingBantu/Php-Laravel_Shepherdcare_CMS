@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Livewire\Feed;
+use App\Http\Livewire\Memberfeed;
+use App\Http\Livewire\MemberProfile;
 
 Route::get('/', [function(){
     return redirect('feed');
@@ -13,9 +15,12 @@ Route::get('/', [function(){
 
 Route::middleware('auth')->group(function () {
 
-   
+//    user side
     Route::get('/feed', Feed::class)->name('feed');
+    Route::get('/user/members', [MemberController::class, 'memberlist'])->name('user.members');
+    Route::get('user/profile/', MemberProfile::class)->name('user.profile');
     
+    // admin side
     Route::get('/dashboard', [ActivityController::class, 'dashboard'])->name('dashboard');
     Route::get('/activity/{name}', [ActivityController::class, 'show'])->name('activity');
     Route::post('/activity/{name}', [ActivityController::class, 'search'])->name('search');
@@ -26,7 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/addactivity', [ActivityController::class, 'index'])->name('addactivity');
     Route::post('/addactivity', [ActivityController::class, 'store']);
     Route::get('/admin/members', [MemberController::class, 'index'])->name('members');
-    Route::get('/user/members', [MemberController::class, 'memberlist'])->name('user.members');
   
     
     Route::get('/notifications', function () {
@@ -34,7 +38,6 @@ Route::middleware('auth')->group(function () {
     })->name('notifications');
     
     Route::get('/profile/{id}', [MemberController::class, 'profile'])->name('profile');
-    Route::get('user/profile/{id}', [MemberController::class, 'memberprofile'])->name('user.profile');
     Route::get('/addmember', [MemberController::class, 'addmember'])->name('addmember');
     Route::post('/updatemember', [MemberController::class, 'updatemember']);
     Route::post('/addmember', [MemberController::class, 'store']);

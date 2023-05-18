@@ -50,6 +50,7 @@
             <div class="container">
                 <div class="header-data">
                     <div class="logo">
+                        {{-- <h2 class="text-white">Shepherd Care</h2> --}}
                         <a href="index.html" title><img src="{{ asset('user/images/logo.png') }}" alt></a>
                     </div>
                     <div class="search-bar">
@@ -60,44 +61,7 @@
                     </div>
                     <nav>
                         <ul>
-                            <li>
-                                <a href="index.html" title>
-                                    <span><img src="{{ asset('user/images/icon1.png') }}" alt></span>
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="companies.html" title>
-                                    <span><img src="{{ asset('user/images/icon2.png') }}" alt></span>
-                                    Companies
-                                </a>
-                                <ul>
-                                    <li><a href="companies.html" title>Companies</a></li>
-                                    <li><a href="company-profile.html" title>Company Profile</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="projects.html" title>
-                                    <span><img src="{{ asset('user/images/icon3.png') }}" alt></span>
-                                    Projects
-                                </a>
-                            </li>
-                            <li>
-                                <a href="profiles.html" title>
-                                    <span><img src="{{ asset('user/images/icon4.png') }}" alt></span>
-                                    Profiles
-                                </a>
-                                <ul>
-                                    <li><a href="user-profile.html" title>User Profile</a></li>
-                                    <li><a href="my-profile-feed.html" title>my-profile-feed</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="jobs.html" title>
-                                    <span><img src="{{ asset('user/images/icon5.png') }}" alt></span>
-                                    Jobs
-                                </a>
-                            </li>
+                          
                             <li>
                                 <a href="#" title class="not-box-openm">
                                     <span><img src="{{ asset('user/images/icon6.png') }}" alt></span>
@@ -215,34 +179,6 @@
                             <i class="la la-sort-down"></i>
                         </div>
                         <div class="user-account-settingss" id="users">
-                            <h3>Online Status</h3>
-                            <ul class="on-off-status">
-                                <li>
-                                    <div class="fgt-sec">
-                                        <input type="radio" name="cc" id="c5">
-                                        <label for="c5">
-                                            <span></span>
-                                        </label>
-                                        <small>Online</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="fgt-sec">
-                                        <input type="radio" name="cc" id="c6">
-                                        <label for="c6">
-                                            <span></span>
-                                        </label>
-                                        <small>Offline</small>
-                                    </div>
-                                </li>
-                            </ul>
-                            <h3>Custom Status</h3>
-                            <div class="search_form">
-                                <form>
-                                    <input type="text" name="search">
-                                    <button type="submit">Ok</button>
-                                </form>
-                            </div>
                             <h3>Setting</h3>
                             <ul class="us-links">
                                 <li><a href="profile-account-setting.html" title>Account Setting</a></li>
