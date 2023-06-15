@@ -4,21 +4,15 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ActivityController;
-use App\Http\Livewire\Feed;
-use App\Http\Livewire\Memberfeed;
-use App\Http\Livewire\MemberProfile;
 
 Route::get('/', [function(){
-    return redirect('feed');
+    return redirect('dashboard');
 }]);
 
 
 Route::middleware('auth')->group(function () {
 
 //    user side
-    Route::get('/feed', Feed::class)->name('feed');
-    Route::get('/user/members', [MemberController::class, 'memberlist'])->name('user.members');
-    Route::get('user/profile/', MemberProfile::class)->name('user.profile');
     
     // admin side
     Route::get('/dashboard', [ActivityController::class, 'dashboard'])->name('dashboard');
