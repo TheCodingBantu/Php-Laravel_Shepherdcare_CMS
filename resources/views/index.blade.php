@@ -157,7 +157,13 @@
                         <div class="card-body p-0">
                             <ul class="products-list product-list-in-card pl-2 pr-2">
                                 @foreach ($items as $item)
-                                <li class="item" onclick="javascript:window.location.href='{{ route('activity-details', ['id' => $item->id]) }}'">
+                                <li class="p-2 mt-2"
+                                @if (App\Models\Comment::where('user_id','=', Auth::user()->id)->where('activity_id','=', $item->id)->exists())
+                                             
+                                            @else
+                                            style="background-color: #F7E9CB; border-radius:6px"
+                                            @endif
+                                class="item" onclick="javascript:window.location.href='{{ route('activity-details', ['id' => $item->id]) }}'">
                                     <div class="product-img ">
                                         <img class="rounded-circle" src=" {{ Avatar::create($item->getActivityRelation->other_names)->toBase64() }}" alt="" class="img-size-50">
                                     </div>

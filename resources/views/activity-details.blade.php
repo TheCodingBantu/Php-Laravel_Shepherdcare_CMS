@@ -40,15 +40,19 @@
                             </div>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" title="Mark as read">
-                                    <i class="far fa-circle"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
+                                
+                                @if ($isActed)
+                                <button disabled type="button" class="btn btn-sm btn-success form-control " data-toggle="modal" data-target="#action-modal">
+                                    <i class="fas fa-check mr-2"></i>
+                                    Action Taken
+                                    </button>
+                                @else
+                                <button type="button" class="btn btn-sm btn-primary form-control " data-toggle="modal" data-target="#action-modal">
+                                    <i class="fas fa-pen mr-2"></i>
+                                    Take Action
+                                    </button>
+                                @endif
+                                    
                             </div>
 
                         </div>
@@ -92,12 +96,12 @@
 
                         <div class="card-footer">
                             <form id="comment-form">
-                                <img class="img-fluid img-circle img-sm"
-                                    src={{ Avatar::create(Auth::User()->name)->toBase64() }} alt="Alt Text">
+                                
+                                <div class="d-flex">
 
-                                <div class="img-push d-flex">
-                                    <input id="comment" type="text" class="form-control mr-2 "
-                                        placeholder="Press enter to post comment">
+                                    
+                                    {{-- <input id="comment" type="text" class="form-control mr-2 "
+                                        placeholder="Press enter to post comment"> --}}
 
                                 </div>
                             </form>
@@ -139,7 +143,7 @@
                                 <div class="col-sm-4">
                                     <div class="description-block">
                                         <h5 class="description-header">{{$celebrations}}</h5>
-                                        <span class="description-text">Celbrations</span>
+                                        <span class="description-text">Celebrations</span>
                                     </div>
 
                                 </div>
@@ -175,17 +179,59 @@
     </section>
     <!-- /.content -->
 </div>
+{{-- modal for adding action --}}
+<div class="modal fade" id="action-modal" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
 
+                <h4 class="modal-title text-md text-center">Take Action</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+           
+            <div class="modal-body">
+                <div class="card-body">
+
+             
+                    <div class="form-group">
+                    <label for="">Did you take Action?</label>
+                    <select name="" class="form-control" id="action">
+                        <option >Yes</option>
+                        <option >No</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                    <label for="comment">Description</label>
+                    <textarea class="form-control" name="" id="comment" cols="10" rows="5" placeholder="Please describe the action you took"></textarea>
+                    </div>
+                    
+                
+                    </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">close</button>
+
+                <button type="button" onclick="saveComment()" class="btn btn-default bg-primary">Save</button>
+            </div>
+       
+        </div>
+
+    </div>
+
+</div>
+{{-- end modal --}}
 
 @yield('footer')
 <script>
-    $("#comment-form").submit(function(e) {
-        e.preventDefault()
-
+    function saveComment() {
+      
         var activity = {{ $record->id }}
         var user = {{ Auth::User()->id }}
         var comment = $('#comment').val()
-
+        var action = $('#action').find(":selected").val()
 
         $.ajax({
             type: "POST",
@@ -196,7 +242,8 @@
             data: {
                 comment: comment,
                 activity: activity,
-                user: user
+                user: user,
+                action: action
             },
             success: function(response) {
 
@@ -226,7 +273,7 @@
 
             }
         }); //end ajax
-    })
+    }
 </script>
 
 <script>

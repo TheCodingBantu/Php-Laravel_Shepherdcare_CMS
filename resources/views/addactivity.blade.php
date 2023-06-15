@@ -188,6 +188,10 @@
                         delay: 2000,
                         body: response.success,
                     })
+                    var url = '{{ route("activity", ":id") }}';
+url = url.replace(':id', category);
+                    location.href=url;
+
                 }
                 if (response.error) {
                     $(document).Toasts('create', {

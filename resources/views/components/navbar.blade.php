@@ -71,7 +71,7 @@
 
       
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
@@ -96,12 +96,25 @@
           <div class="dropdown-divider"></div>
           <a href="{{route('notifications')}}" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">
-          <i class="fas fa-expand-user"></i>
+      </li> --}}
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-user"></i>
         </a>
+        <div class="dropdown-menu dropdown-menu-md ">
+          
+          <a href="{{route('profile',['id' => (App\Models\Member::where('email','=',Auth::user()->email)->first())->id])}}" class="dropdown-item">Profile
+          </a>
+         
+          <a  class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
+         
       </li>
+
    
     </ul>
   </nav>

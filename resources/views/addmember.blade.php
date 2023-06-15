@@ -342,6 +342,7 @@
                         delay: 2000,
                         body: response.success,
                     })
+                    location.href="{{route('members')}}";
                 }
                 if (response.error) {
                     $(document).Toasts('create', {

@@ -145,8 +145,10 @@ class ActivityController extends Controller
         $connects = count(Activity::where('category', '=', 'connect')->where('added_by','=',$user->id)->get());
         $celebrations = count(Activity::where('category', '=', 'celebrate')->where('added_by','=',$user->id)->get());
 
+        // check whether the authenticated user has already taken action
+        $is_acted=Comment::where('user_id','=', Auth::user()->id)->where('activity_id','=', $id)->exists();
 
-        return view('activity-details', ['cares'=>$cares,'connects'=>$connects,'celebrations'=>$celebrations,'thisYear'=>$thisYear,'lastYear'=>$lastYear,'record' => $record, 'member' => $member, 'user' => $user, 'comments' => $comments]);
+        return view('activity-details', ['isActed'=>$is_acted,'cares'=>$cares,'connects'=>$connects,'celebrations'=>$celebrations,'thisYear'=>$thisYear,'lastYear'=>$lastYear,'record' => $record, 'member' => $member, 'user' => $user, 'comments' => $comments]);
     }
 
     private function adminAnalytics($year,$user)
@@ -195,6 +197,7 @@ class ActivityController extends Controller
             $item->user_id = $request->input('user');
             $item->activity_id = $request->input('activity');
             $item->comment = $request->input('comment');
+            $item->is_acted = $request->input('action');
 
             $item->save();
 

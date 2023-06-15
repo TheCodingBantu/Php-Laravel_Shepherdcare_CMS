@@ -99,14 +99,20 @@
                                     <!-- Post -->
                                     @isset($records)
                                         @foreach ($records as $record)
-                                            <div class="post"
+                                            <div class="post p-3 mb-2   "
+                                            @if (App\Models\Comment::where('user_id','=', Auth::user()->id)->where('activity_id','=', $record->id)->exists())
+                                             
+                                            @else
+                                            style="background-color: #F7E9CB; border-radius:6px"
+                                            @endif
+                                            
                                                 onclick="javascript:window.location.href='{{ route('activity-details', ['id' => $record->id]) }}'">
                                                 <div class="user-block">
                                                     <img class="img-circle img-bordered-sm"
                                                         src="{{ Avatar::create($record->getActivityRelation->other_names)->toBase64() }}"
                                                         alt="user image">
-                                                    <span class="username">
-                                                        <a href="javascript:void(0)">{{ $record->title }}</a>
+                                                    <span class="username ">
+                                                        <a href="javascript:void(0)" >{{ $record->title }}</a>
                                                     </span>
                                                     <span class="description">Added by {{ $record->getUserRelation->name }}
                                                         - {{ $record->created_at->diffForHumans() }}</span>
@@ -115,6 +121,7 @@
                                                 <p>
                                                     {{ $record->description }}
                                                 </p>
+
 
                                             </div>
                                         @endforeach

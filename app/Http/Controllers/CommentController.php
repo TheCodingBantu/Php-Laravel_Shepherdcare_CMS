@@ -43,6 +43,7 @@ class CommentController extends Controller
             $item->user_id = $request->input('user');
             $item->activity_id = $request->input('activity');
             $item->comment = $request->input('comment');
+            $item->is_acted = $request->input('action');
 
             $item->save();
 

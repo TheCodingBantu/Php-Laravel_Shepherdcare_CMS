@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('activity_id');
+            $table->string('is_acted');
             $table->string('comment');
             $table->timestamps();
         });
