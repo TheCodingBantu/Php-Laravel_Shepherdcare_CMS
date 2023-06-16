@@ -51,9 +51,12 @@
               <div class="card-footer">
                 <div class="text-right">
                   
+                  @if (Auth::User()->role !="admin")
                   <a href="{{route('profile',['id' => $record->id])}}" class="btn btn-sm btn-primary">
                     <i class="fas fa-user"></i> View Profile
                   </a>
+                  @endif
+                  
 
                 </div>
               </div>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('surname')->nullable();
             $table->string('other_names');
             $table->string('phone');
-            $table->string('role');
+            $table->string('role');//superuser admin user member
             $table->string('email')->nullable();
             $table->string('residence');
             $table->string('marital_status');

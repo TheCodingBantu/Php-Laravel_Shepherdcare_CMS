@@ -239,12 +239,14 @@
                                                             <label for="inputName2" class="col-sm-2 col-form-label">Role</label>
                                                             <div class="col-sm-10">
                                                                 <select onchange="changeUser('{{ $record->role }}')"
-                                                                    @if ($record->role == 'admin') disabled @endif name=""
+                                                                    @if ($record->role == 'admin' || $record->role == 'user' ) disabled @endif name=""
                                                                     class="form-control" id="role">
                                                                     <option @if ($record->role == 'member') selected @endif
                                                                         value="member">Member</option>
                                                                     <option @if ($record->role == 'admin') selected @endif
                                                                         value="admin">Admin</option>
+                                                                    <option @if ($record->role == 'user') selected @endif
+                                                                        value="user">User</option>
 
                                                                 </select>
                                                             </div>
@@ -337,7 +339,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p class="text-center">Change User to Admin?</p>
+                                <p class="text-center">Upgrade User Privileges?</p>
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-danger" onclick="userRoleChangeConfirm('0')">No</button>
@@ -361,8 +363,8 @@
                     }
 
                     function changeUser(role) {
-                        // if someone selects admin and the member was not previously an admin
-                        if ($("#role").val() != role && $("#role").val() == 'admin') {
+                        // if someone selects admin/user and the member was not previously an admin
+                        if (($("#role").val() != role && $("#role").val() == 'admin')||($("#role").val() != role && $("#role").val() == 'user')) {
                             $('#modal-sm').modal('show');
                         }
 

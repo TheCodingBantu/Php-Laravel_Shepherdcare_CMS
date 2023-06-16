@@ -229,6 +229,7 @@
                                                     data-placeholder="" style="width: 100%;">
                                                     <option value="member" >Member</option>
                                                     <option value="admin" >Admin</option>
+                                                    <option value="user" >User</option>
                                                    
                                                 </select>
                                             </div>

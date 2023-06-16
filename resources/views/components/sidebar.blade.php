@@ -27,6 +27,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+        @if (Auth::User()->role=='superuser')
         <li class="nav-item @if(Request::path() == 'dashboard') menu-open @endif ">
           <a href="{{route('dashboard')}}" class="nav-link ">
             <i class="nav-icon fas fa-home"></i>
@@ -61,6 +62,10 @@
             </li>
           </ul>
         </li>
+        @endif
+        
+        @if (Auth::User()->role =='admin' || Auth::User()->role=='superuser')
+       
         <li class="nav-item nav-item @if(Request::path() == 'addmember') menu-open @endif 
           @if( str_contains(Request::path(),'profile') ) menu-open @endif  
           @if(Request::path() == 'members') menu-open @endif">
@@ -71,6 +76,9 @@
             </p>
           </a>
         </li>
+        @endif
+        @if (Auth::User()->role=='user' || Auth::User()->role=='superuser')
+
         <li class="nav-item nav-item @if(Request::path() == 'activity/connect') menu-open @endif ">
           <a href="{{route('activity',['name'=>'connect'])}}" class="nav-link">
             <i class="nav-icon fas fa-link"></i>
@@ -103,6 +111,7 @@
             </p>
           </a>
         </li>
+        @endif
 
       </ul>
     </nav>

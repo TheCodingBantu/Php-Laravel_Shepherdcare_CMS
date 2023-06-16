@@ -59,11 +59,12 @@ class MemberController extends Controller
             $item->description = $request->input('description');
             $item->ministries = json_encode($request->input('ministry'));
 
-            if ($item->save() && $request->input('role') == 'admin') {
+            if ($item->save() && ($request->input('role') == 'admin'|| $request->input('role') == 'user')) {
                 // save in user also with default password
                 $user = new User();
                 $user->name = $request->input('surname') . ' ' . $request->input('other_names');
                 $user->email = $request->input('email');
+                $user->role = $request->input('role');
                 $user->password = Hash::make('redeemed');
                 $user->save();
             }
@@ -95,12 +96,13 @@ class MemberController extends Controller
             $item->save();
 
 
-            // if the user was changed from member to admin, add their detials to the user side
-            if ($item->save() && $request->input('role') == 'admin' && Session::get('memberRole') == 'member') {
+            // if the user was changed from member to admin/user, add their detials to the user side
+            if ($item->save() && (($request->input('role') == 'admin')||($request->input('role') == 'user')) && Session::get('memberRole') == 'member') {
                 // save in user also with default password
                 $user = new User();
                 $user->name = $request->input('surname') . ' ' . $request->input('other_names');
                 $user->email = $request->input('email');
+                $user->role = $request->input('role');
                 $user->password = Hash::make('redeemed');
                 $user->save();
             }
