@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->string('surname');
+            $table->string('surname')->nullable();
             $table->string('other_names');
             $table->string('phone');
             $table->string('role');

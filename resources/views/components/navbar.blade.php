@@ -103,8 +103,10 @@
           <i class="far fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-md ">
-          
+          @if (Auth::user()->id != '1')
           <a href="{{route('profile',['id' => (App\Models\Member::where('email','=',Auth::user()->email)->first())->id])}}" class="dropdown-item">Profile
+              
+          @endif
           </a>
          
           <a  class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

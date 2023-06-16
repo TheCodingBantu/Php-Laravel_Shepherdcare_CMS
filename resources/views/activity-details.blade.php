@@ -31,7 +31,7 @@
                     <div class="card card-widget">
                         <div class="card-header">
                             <div class="user-block">
-                                <img class="img-circle" src={{ Avatar::create($member->other_names)->toBase64() }}
+                                <img class="img-circle" src={{  Avatar::create(ucfirst(Auth::User()->name))->toBase64() }}
                                     alt="User Image">
                                 <span class="username"><a href="javascript:void(0)">{{ $record->title }}</a></span>
                                 <span class="description">Added by {{ $user->name }} -

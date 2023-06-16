@@ -47,9 +47,9 @@ class MemberController extends Controller
 
             // Validate the value...
             $item = new Member();
-            $item->surname = $request->input('surname');
+            $item->other_names = ucfirst($request->input('surname')) . ' ' . ucfirst($request->input('other_names'));
+
             $item->role = $request->input('role');
-            $item->other_names = $request->input('other_names');
             $item->phone = $request->input('phone');
             $item->email = $request->input('email');
             $item->residence = $request->input('residence');

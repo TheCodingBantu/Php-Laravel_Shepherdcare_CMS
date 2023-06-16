@@ -38,50 +38,22 @@
               
             </div>
             <div class="card-body p-0">
-              <div class="bs-stepper">
-                <div class="bs-stepper-header" role="tablist">
-                  <!-- your steps here -->
-                  <div class="step" data-target="#logins-part">
-                    <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger">
-                      <span class="bs-stepper-circle">1</span>
-                      <span class="bs-stepper-label">Who?</span>
-                    </button>
-                  </div>
-                  <div class="line"></div>
-
-                  <div class="step" data-target="#what-part">
-                    <button type="button" class="step-trigger" role="tab" aria-controls="what-part" id="what-part-trigger">
-                      <span class="bs-stepper-circle">2</span>
-                      <span class="bs-stepper-label">What?</span>
-                    </button>
-                  </div>
-                  
-                  <div class="line"></div>
-                  <div class="step" data-target="#information-part">
-                    <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
-                      <span class="bs-stepper-circle">3</span>
-                      <span class="bs-stepper-label">Share</span>
-                    </button>
-                  </div>
-         
-                </div>
+                
 
                 <div class="bs-stepper-content">
                   <!-- your steps content here -->
-                  <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+       
+
+                  <div id="what-part" class="content" role="tabpanel" aria-labelledby="what-part-trigger">
                     <div class="form-group">
                       <label>Search Member</label>
                       <select id="member-id" class="form-control select2" style="width: 100%;">
                         @foreach($records as $record)
-                        <option value="{{$record->id}}" @if( app('request')->input('user') == $record->id ) selected="selected" @endif  >{{$record->surname}}{{$record->other_names}}</option>
+                        <option value="{{$record->id}}" @if( app('request')->input('user') == $record->id ) selected="selected" @endif  >{{$record->surname}} {{$record->other_names}}</option>
                         @endforeach
                         
                       </select>
                     </div>
-                    <button class="btn btn-primary" onclick="stepper.next()">Next</button>
-                  </div>
-
-                  <div id="what-part" class="content" role="tabpanel" aria-labelledby="what-part-trigger">
                     <div class="form-group">
                       <label>Choose Category</label>
                       <select id="category" class="form-control" style="width: 100%;">
@@ -105,12 +77,13 @@
                       <label>Describe</label>
                       <textarea id="description" class="form-control" rows="3" placeholder="Enter ..."></textarea>
                     </div>
-                    <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
+                    {{-- <button class="btn btn-primary" onclick="stepper.previous()">Previous</button> --}}
 
-                    <button class="btn btn-primary" onclick="stepper.next()">Next</button>
+                    <button  class="btn btn-primary" onclick="saveActivity()">Submit</button>
+
                   </div>
 
-                  <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+                  {{-- <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                     <div class="form-group">
                       <label>Select people you want to share this activity with</label>
                       <div class="select2-green">
@@ -123,7 +96,7 @@
                     </div>
                     <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
                     <button  class="btn btn-primary" onclick="saveActivity()">Submit</button>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
             </div>

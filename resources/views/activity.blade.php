@@ -109,7 +109,7 @@
                                                 onclick="javascript:window.location.href='{{ route('activity-details', ['id' => $record->id]) }}'">
                                                 <div class="user-block">
                                                     <img class="img-circle img-bordered-sm"
-                                                        src="{{ Avatar::create($record->getActivityRelation->other_names)->toBase64() }}"
+                                                        src="{{ Avatar::create(ucfirst(Auth::User()->name))->toBase64() }}"
                                                         alt="user image">
                                                     <span class="username ">
                                                         <a href="javascript:void(0)" >{{ $record->title }}</a>
